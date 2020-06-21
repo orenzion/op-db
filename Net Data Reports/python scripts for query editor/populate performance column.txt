@@ -1,0 +1,11 @@
+# 'dataset' holds the input data for this script
+
+dataset.sort_values(['SHM_KRN','td2'], ascending=[True, True])
+
+for i in range(len(dataset)):
+    if dataset.loc[i,'TKUFAT_DIVUACH'] == 201701:
+        dataset.loc[i,'Performance'] = 100+dataset.loc[i,'TSUA_NOMINALIT_BRUTO_HODSHIT']
+    elif dataset.loc[i,'SHM_KRN'] != dataset.loc[i-1,'SHM_KRN'] and dataset.loc[i,'TKUFAT_DIVUACH'] != 201701:
+        dataset.loc[i,'Performance'] = 100+dataset.loc[i,'TSUA_NOMINALIT_BRUTO_HODSHIT']
+    else:
+        dataset.loc[i,'Performance'] = dataset.loc[i-1,'Performance']*(1+dataset.loc[i,'TSUA_NOMINALIT_BRUTO_HODSHIT']/100)
