@@ -39,8 +39,10 @@ class NetDataProcessor:
         # new files to insert
         new_files_list = list(set(all_files_list) - set(existing_file_names_list_full_path))
 
+        # tags list for pnet
         tagsList = tag_lists.tags_list_pnet
         
+        # read and insert tables to db
         for file_ in new_files_list:
             with open(file_,'r',encoding='utf8') as file:
                 handler = file.read()
