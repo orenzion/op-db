@@ -44,7 +44,7 @@ class NetDataProcessor:
         for file_ in new_files_list:
             with open(file_,'r',encoding='utf8') as file:
                 handler = file.read()
-                soup = BeautifulSoup(handler)
+                soup = BeautifulSoup(handler, features="html.parser")
             arr = []
             for tag in tagsList:
                 temp_arr = [item.text for item in soup.find_all(tag)]
