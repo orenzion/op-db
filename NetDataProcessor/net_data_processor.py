@@ -24,7 +24,7 @@ class NetDataProcessor:
         self.cursor = self.db.cursor()
 
         self.pnet_files_folder = r"C:\Users\orenz\Desktop\op_db\NetData\pensyanet_maslul_clali"
-        self.gnet_files_folder = r"C:\Users\orenz\Desktop\op_db\NetData\gnetnet_maslul_clali"
+        self.gnet_files_folder = r"C:\Users\orenz\Desktop\op_db\NetData\gemelnet_maslul_clali"
 
     def populate_pnet_general_table(self):
         # get existing files from db so we don't try to read them again
@@ -61,7 +61,7 @@ class NetDataProcessor:
 
     def populate_gnet_general_table(self):
         # get existing files from db so we don't try to read them again
-        self.cursor.execute('''select distinct file_name from pnet_general''')
+        self.cursor.execute('''select distinct file_name from gnet_general''')
       
         existing_file_names_list = [item[0] for item in list(self.cursor.fetchall())]
 
@@ -74,7 +74,7 @@ class NetDataProcessor:
         new_files_list = list(set(all_files_list) - set(existing_file_names_list_full_path))
 
         # tags list for pnet
-        tagsList = tag_lists.tags_list_pnet
+        tagsList = tag_lists.tags_list_gnet
         
         # read and insert tables to db
         for file_ in new_files_list:
@@ -98,7 +98,7 @@ class NetDataProcessor:
             df['file_name'] = ntpath.basename(file_)
     
             # Insert whole DataFrame into MySQL
-            df.to_sql('pnet_general', con = self.engine, if_exists = 'append',index=False)
+            df.to_sql('gnet_general', con = self.engine, if_exists = 'append',index=False)
 
 
 
@@ -110,5 +110,6 @@ if __name__ == "__main__":
 
     netDataProcessor = NetDataProcessor()
     netDataProcessor.populate_pnet_general_table()
+    netDataProcessor.populate_gnet_general_table()
     
 
