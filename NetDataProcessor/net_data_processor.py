@@ -59,6 +59,7 @@ class NetDataProcessor:
             # Insert whole DataFrame into MySQL
             df.to_sql('pnet_general', con = self.engine, if_exists = 'append',index=False)
 
+
     def populate_gnet_general_table(self):
         # get existing files from db so we don't try to read them again
         self.cursor.execute('''select distinct file_name from gnet_general''')
