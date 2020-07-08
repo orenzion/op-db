@@ -53,3 +53,16 @@ select
 from gnet_general g;
 
 -- query and test the view
+select *
+from v_p_g_performance pgp;
+
+select distinct fund_id
+from v_p_g_performance;
+
+select count(distinct fund_id)
+from v_p_g_performance;
+
+select *
+from v_p_g_performance pgp
+where pgp.liquidity_ratio != null;
+

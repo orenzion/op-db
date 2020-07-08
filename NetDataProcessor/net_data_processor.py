@@ -93,7 +93,7 @@ class NetDataProcessor:
                     else:
                         row_arr.append(cell)
     
-            rows_arr.append(row_arr)
+                rows_arr.append(row_arr)
         
             df = pd.DataFrame(np.array(rows_arr), columns=tagsList)    
             df['file_name'] = ntpath.basename(file_)
