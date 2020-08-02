@@ -82,3 +82,8 @@ tags_list_gnet = ['id',
  'yahas_nezilut',
  'mispar_kupa_av',
  'num_hevra']
+
+tags_list_pnet_perut = ['id_krn','shm_krn','tkf_divuach','id_natun','shm_krn','erech_natun','achuz']
+
+tags_list_gnet_perut = ['id_kupa','tkf_divuach','id_natun','shm_natun','erech_natun','achuz']
+
